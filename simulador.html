@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios de Lógica de Programación</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #032251;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #e60c0c;
+            margin-bottom: 20px;
+        }
+        /* Contenedor de las tarjetas */
+        
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Estilos de las tarjetas */
+        
+        .card {
+            flex: 1 1 calc(20% - 20px);
+            /* Ajuste para 5 tarjetas por fila */
+            background-color: #029996;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            min-height: 180px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #50d907;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .card p {
+            font-size: 0.9em;
+            color: #100f0f;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .card a {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .card a:hover {
+            background-color: #e60c0c;
+        }
+        
+        .navigation {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simulador</h1>
+    <div class="grid">
+        <!-- 40 Tarjetas (5 por fila, 8 filas en total) -->
+        <!-- Fila 1 -->
+        <div class="card">
+            <h3>Ejercicio 1</h3>
+            <p>Diferencia entre operadores</p>
+            <a href="1ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 2</h3>
+            <p>Escribe una función que calcule el factorial de un número dado.</p>
+            <a href="2ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 3</h3>
+            <p>Crea un algoritmo para contar el número de vocales en una frase.</p>
+            <a href="3ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 4</h3>
+            <p>
+                Desarrolla un programa que determine el número máximo en un arreglo.
+            </p>
+            <a href="4ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 5</h3>
+            <p>
+                Implementa una función que calcule el promedio de una lista de números.
+            </p>
+            <a href="5ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <!-- Fila 2 -->
+        <div class="card">
+            <h3>Ejercicio 6</h3>
+            <p>Calcula la suma de los primeros 100 números naturales.</p>
+            <a href="6ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 7</h3>
+            <p>Escribe un programa que convierta grados Celsius a Fahrenheit.</p>
+            <a href="7ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 8</h3>
+            <p>Determina si una cadena es un palíndromo.</p>
+            <a href="8ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 9</h3>
+            <p>Encuentra la mediana en una lista de números.</p>
+            <a href="9ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 10</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="10ejercicio.html">Ver Ejercicio</a>
+        </div>
+
+        <!-- Fila 3 - Añadir más tarjetas hasta completar 8 filas -->
+        <!-- Continua este mismo patrón hasta completar 40 tarjetas -->
+
+        <!-- ... (continuar añadiendo tarjetas) ... -->
+        <div class="card">
+            <h3>Ejercicio 11</h3>
+            <p>¿Cuál de las siguientes técnicas es fundamental para el desarrollo de un modelo abstracto?</p>
+            <a href="11ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 12</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="12ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 13</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="13ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 14</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="14ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 15</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="15ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 16</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="16ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 17</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="17ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 18</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="18ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 19</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="19ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 20</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="20ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 21</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="21ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 22</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="22ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 23</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="23ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 24</h3>
+            <p>Cuenta el número de consonantes en una frase dada.</p>
+            <a href="24ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 25</h3>
+            <p></p>
+            <a href="25ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 26</h3>
+            <p></p>
+            <a href="26ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 27</h3>
+            <p></p>
+            <a href="27ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 28</h3>
+            <p></p>
+            <a href="28ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 29</h3>
+            <p></p>
+            <a href="29ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 30</h3>
+            <p></p>
+            <a href="30ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 31</h3>
+            <p></p>
+            <a href="31 ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 32</h3>
+            <p></p>
+            <a href="32ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 33</h3>
+            <p></p>
+            <a href="33ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 34</h3>
+            <p></p>
+            <a href="34ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 35</h3>
+            <p></p>
+            <a href="35ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 36</h3>
+            <p></p>
+            <a href="36ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 37</h3>
+            <p></p>
+            <a href="37ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 38</h3>
+            <p></p>
+            <a href="38ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 39</h3>
+            <p></p>
+            <a href="39ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 40</h3>
+            <p></p>
+            <a href="40ejercicio.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 41</h3>
+            <p></p>
+            <a href="ejer41.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 42</h3>
+            <p></p>
+            <a href="ejer42.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 43</h3>
+            <p></p>
+            <a href="ejer43.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 44</h3>
+            <p></p>
+            <a href="ejer44.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 45</h3>
+            <p></p>
+            <a href="ejer45.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 46</h3>
+            <p></p>
+            <a href="ejer46.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 47</h3>
+            <p></p>
+            <a href="ejer47.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 48</h3>
+            <p></p>
+            <a href="ejer48.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 49</h3>
+            <p></p>
+            <a href="ejer49.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 50</h3>
+            <p></p>
+            <a href="ejer50.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 51</h3>
+            <p></p>
+            <a href="ejer51.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 52</h3>
+            <p></p>
+            <a href="ejer52.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 53</h3>
+            <p></p>
+            <a href="ejer53.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 54</h3>
+            <p></p>
+            <a href="ejer54.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 55</h3>
+            <p></p>
+            <a href="ejer55.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 56</h3>
+            <p></p>
+            <a href="ejer56.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 57</h3>
+            <p></p>
+            <a href="ejer57.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 58</h3>
+            <p></p>
+            <a href="ejer58.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 59</h3>
+            <p></p>
+            <a href="ejer59.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 60</h3>
+            <p></p>
+            <a href="ejer60.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 61</h3>
+            <p></p>
+            <a href="ejer61.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 62</h3>
+            <p></p>
+            <a href="ejer62.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 63</h3>
+            <p></p>
+            <a href="ejer63.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 64</h3>
+            <p></p>
+            <a href="ejer64.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 65</h3>
+            <p></p>
+            <a href="ejer65.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 66</h3>
+            <p></p>
+            <a href="ejer66.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 67</h3>
+            <p></p>
+            <a href="ejer67.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 68</h3>
+            <p></p>
+            <a href="ejer68.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 69</h3>
+            <p></p>
+            <a href="ejer69.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 70</h3>
+            <p></p>
+            <a href="ejer70.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 71</h3>
+            <p></p>
+            <a href="ejer71.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 72</h3>
+            <p></p>
+            <a href="ejer72.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 73</h3>
+            <p></p>
+            <a href="ejer73.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 74</h3>
+            <p></p>
+            <a href="ejer74.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 75</h3>
+            <p></p>
+            <a href="ejer75.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 76</h3>
+            <p></p>
+            <a href="ejer76.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 77</h3>
+            <p></p>
+            <a href="ejer77.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 78</h3>
+            <p></p>
+            <a href="ejer78.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 79</h3>
+            <p></p>
+            <a href="ejer79.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+            <h3>Ejercicio 80</h3>
+            <p></p>
+            <a href="ejer80.html">Ver Ejercicio</a>
+        </div>
+    </div>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+    </div>
+
+    <button onclick="regresarAPrincipal1()" class="btn">finalizar</button>
+    <script>
+        function regresarAPrincipal1() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/proyecto.html"
+        }
+    </script>
+</body>
+
+
+</html>

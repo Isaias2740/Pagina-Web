@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Número Perfecto</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #06925a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+        
+        main {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: #010b10;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #aaa;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #007acc;
+            width: 80%;
+            max-width: 300px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #005f8d;
+            outline: none;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007acc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #005f8d;
+        }
+        
+        button:focus {
+            outline: none;
+        }
+        
+        p#resultado11,
+        p#resultado12,
+        p#resultado13,
+        p#resultado14 {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #007acc;
+            font-weight: bold;
+        }
+        
+        .navigation {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #005f8d;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Verificar Número Perfecto</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number8" id="numero8" min="1" />
+    <button onclick="verificarNumeroPerfecto()">Verificar</button>
+    <p id="resultado11"></p>
+
+    <h1>Verificar Número Primo</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number9" id="numero9" min="1" />
+    <button onclick="verificarPrimo()">Verificar</button>
+    <p id="resultado12"></p>
+
+    <h1>Invertir Dígitos del Número</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number10" id="numero10" min="1" />
+    <button onclick="invertirDigitos()">Invertir Dígitos</button>
+    <p id="resultado13"></p>
+
+    <h1>Contar Dígitos de un Número</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number11" id="numero11" min="1" />
+    <button onclick="contarDigitos()">Contar Dígitos</button>
+    <p id="resultado14"></p>
+
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+    </div>
+    <button onclick="regresarAPrincipal()" class="btn">finalizar</button>
+    <script>
+        function verificarNumeroPerfecto() {
+            let numero = parseInt(document.getElementById("numero8").value);
+            let sumaDivisores = 0;
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado11").innerText = "Por favor, introduce un número entero positivo.";
+                return;
+            }
+
+            for (let i = 1; i < numero; i++) {
+                if (numero % i === 0) {
+                    sumaDivisores += i;
+                }
+            }
+
+            if (sumaDivisores === numero) {
+                document.getElementById("resultado11").innerText = numero + " es un número perfecto.";
+            } else {
+                document.getElementById("resultado11").innerText = numero + " no es un número perfecto.";
+            }
+        }
+
+        function verificarPrimo() {
+            let numero = parseInt(document.getElementById("numero9").value);
+            let esPrimo = true;
+
+            if (isNaN(numero) || numero <= 1) {
+                document.getElementById("resultado").innerText = "Por favor, introduce un número entero positivo mayor que 1.";
+                return;
+            }
+
+            for (let i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i === 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+
+            if (esPrimo) {
+                document.getElementById("resultado12").innerText = numero + " es un número primo.";
+            } else {
+                document.getElementById("resultado12").innerText = numero + " no es un número primo.";
+            }
+        }
+
+        function invertirDigitos() {
+            let numero = document.getElementById("numero10").value;
+            let numeroInvertido = numero.split('').reverse().join('');
+
+            document.getElementById("resultado13").innerText = "El número invertido es: " + numeroInvertido;
+        }
+
+        function contarDigitos() {
+            let numero = document.getElementById("numero11").value;
+            let numeroDeDigitos = numero.length;
+
+            document.getElementById("resultado14").innerText = "El número tiene " + numeroDeDigitos + " dígitos.";
+        }
+
+        function regresarAPrincipal() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/proyecto.html"
+        }
+    </script>
+</body>
+
+</html>

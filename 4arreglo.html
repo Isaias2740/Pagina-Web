@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaciado entre caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0ec548;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: rgba(55, 223, 80, 0.826);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(12, 120, 235, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #08668e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        #resultado1,
+        #resultado2,
+        #resultado3 {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffebcd;
+            border: 1px solid #ffcc80;
+            border-radius: 8px;
+        }
+        
+        .navigation {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #08668e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio: Suma de Dígitos de un Número</h1>
+    <div class="container">
+        <label for="numero">Ingresa un número:</label>
+        <input type="number" id="numero" placeholder="Escribe un número">
+        <button onclick="calcularSuma()">Calcular Suma de Dígitos</button>
+    </div>
+    <div id="resultado1" style="margin-top: 20px;"></div>
+    <h1>Contar y Sumar Números Positivos y Negativos</h1>
+
+    <div class="container">
+        <label for="numero">Ingresa 10 números:</label><br>
+        <!-- Se crearán 10 campos de entrada -->
+        <div id="inputs">
+            <input type="number" class="numInput" placeholder="Número 1">
+            <input type="number" class="numInput" placeholder="Número 2">
+            <input type="number" class="numInput" placeholder="Número 3">
+            <input type="number" class="numInput" placeholder="Número 4">
+            <input type="number" class="numInput" placeholder="Número 5">
+            <input type="number" class="numInput" placeholder="Número 6">
+            <input type="number" class="numInput" placeholder="Número 7">
+            <input type="number" class="numInput" placeholder="Número 8">
+            <input type="number" class="numInput" placeholder="Número 9">
+            <input type="number" class="numInput" placeholder="Número 10">
+        </div>
+        <button onclick="contarYSumar()">Contar y Sumar</button>
+    </div>
+    <div id="resultado2"></div>
+
+    <h1>Cuadrado de los Elementos de un Arreglo</h1>
+
+    <div class="container">
+        <label for="numeros">Ingresa números separados por coma:</label><br>
+        <input type="text" id="numeros" placeholder="Ej: 2, 4, 5, 7">
+        <button onclick="calcularCuadrados()">Calcular Cuadrados</button>
+    </div>
+    <div id="resultado3"></div>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+    </div>
+    </div>
+    <button onclick="regresarAPrincipal1()" class="btn">finalizar</button>
+    <script>
+        function mostrarResultado1(mensaje) {
+            document.getElementById('resultado1').innerText = mensaje;
+        }
+
+        function calcularSuma() {
+            let numero = document.getElementById('numero').value;
+            if (numero === "") {
+                mostrarResultado1("Por favor, ingresa un número.");
+                return;
+            }
+            let digitos = numero.split('').map(Number);
+            let suma = digitos.reduce((acc, val) => acc + val, 0);
+            mostrarResultado1(`Los dígitos del número son: ${digitos.join(", ")}\nSuma de los dígitos: ${suma}`);
+        }
+
+        function mostrarResultado2(mensaje) {
+            document.getElementById('resultado2').innerText = mensaje;
+        }
+
+        function contarYSumar() {
+            let numeros = Array.from(document.querySelectorAll('.numInput')).map(input => Number(input.value));
+            if (numeros.includes(NaN)) {
+                mostrarResultado2("Por favor, ingresa 10 números.");
+                return;
+            }
+
+            let positivos = 0;
+            let negativos = 0;
+            let sumaPositivos = 0;
+            let sumaNegativos = 0;
+            numeros.forEach(num => {
+                if (num > 0) {
+                    positivos++;
+                    sumaPositivos += num;
+                } else if (num < 0) {
+                    negativos++;
+                    sumaNegativos += num;
+                }
+            });
+            mostrarResultado2(`
+                Números Positivos: ${positivos}, Suma de Positivos: ${sumaPositivos} <br>
+                Números Negativos: ${negativos}, Suma de Negativos: ${sumaNegativos}
+            `);
+        }
+
+        function mostrarResultado3(mensaje) {
+            document.getElementById('resultado3').innerHTML = mensaje;
+        }
+
+        function calcularCuadrados() {
+            let inputNumeros = document.getElementById('numeros').value.trim(); // Obtiene el valor del input
+
+            if (inputNumeros === "") {
+                mostrarResultado3("Por favor, ingresa números separados por coma.");
+                return;
+            }
+            let arregloOriginal = inputNumeros.split(',').map(num => Number(num.trim()));
+            if (arregloOriginal.some(isNaN)) {
+                mostrarResultado3("Por favor, asegúrate de ingresar solo números separados por coma.");
+                return;
+            }
+            let arregloCuadrado = arregloOriginal.map(num => num ** 2);
+            mostrarResultado3(`
+                Arreglo original: [${arregloOriginal.join(", ")}] <br>
+                Cuadrado de los elementos: [${arregloCuadrado.join(", ")}]
+            `);
+        }
+
+        function regresarAPrincipal1() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/proyecto.html"
+        }
+    </script>
+</body>
+
+</html>

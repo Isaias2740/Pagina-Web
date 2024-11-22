@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #024e71;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>1. Ingresar Nombre y Apellido</h1>
+        <input type="text" id="nombre" placeholder="Ingresa el nombre" />
+        <input type="text" id="apellido" placeholder="Ingresa el apellido" />
+        <button onclick="mostrarNombre()">Mostrar Nombre Completo</button>
+        <p id="nombreCompleto"></p>
+    </div>
+    <div class="container">
+        <h1>2. Comparar Frases</h1>
+        <input type="text" id="frase1" placeholder="Ingresa la primera frase" />
+        <input type="text" id="frase2" placeholder="Ingresa la segunda frase" />
+        <button onclick="compararFrases()">Comparar Frases</button>
+        <p id="resultadoComparacion"></p>
+    </div>
+    <div class="container">
+        <h1>3. Ingresar Palabra</h1>
+        <input type="text" id="palabra" placeholder="Ingresa una palabra" />
+        <button onclick="separarPalabra()">Crear Palabra Separada</button>
+        <p id="resultadoPalabra"></p>
+    </div>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+        <button type="button" onclick="window.location.href='file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/cadenas/3ejercicio.html'">Siguiente</button>
+    </div>
+    <script>
+        function mostrarNombre() {
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            document.getElementById("nombreCompleto").innerText = `Apellido: ${apellido}, Nombre: ${nombre}`;
+        }
+
+        function compararFrases() {
+            const frase1 = document.getElementById("frase1").value;
+            const frase2 = document.getElementById("frase2").value;
+            if (frase1 === frase2) {
+                document.getElementById("resultadoComparacion").innerText = "Las frases son iguales.";
+            } else if (frase1 > frase2) {
+                document.getElementById("resultadoComparacion").innerText = "La primera frase es mayor que la segunda.";
+            } else {
+                document.getElementById("resultadoComparacion").innerText = "La primera frase es menor que la segunda.";
+            }
+        }
+
+        function separarPalabra() {
+            const palabra = document.getElementById("palabra").value;
+            const palabraSeparada = palabra.split("").join(" ");
+            document.getElementById("resultadoPalabra").innerText = palabraSeparada;
+        }
+    </script>
+</body>
+
+</html>

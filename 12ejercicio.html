@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencia entre Operadores</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #024e71;
+            margin: 20px;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        label {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Matriculación en Línea</h1>
+        <p>Introduce la cantidad de materias seleccionadas por tipo de matrícula.</p>
+        <form id="matriculaForm">
+            <div>
+                <h3>Tipo de Matrícula Ordinaria</h3>
+                <label>M. Presencial:</label><input type="number" id="ordPres" value="1">
+                <label>M. a Distancia:</label><input type="number" id="ordDist" value="2">
+                <label>Talleres:</label><input type="number" id="ordTaller" value="4">
+            </div>
+            <div>
+                <h3>Tipo de Matrícula Extraordinaria</h3>
+                <label>M. Presencial:</label><input type="number" id="extPres" value="2">
+                <label>M. a Distancia:</label><input type="number" id="extDist" value="2">
+                <label>Talleres:</label><input type="number" id="extTaller" value="4">
+            </div>
+
+            <div>
+                <h3>Tipo de Matrícula Especial</h3>
+                <label>M. Presencial:</label><input type="number" id="espPres" value="5">
+                <label>M. a Distancia:</label><input type="number" id="espDist" value="3">
+                <label>Talleres:</label><input type="number" id="espTaller" value="5">
+            </div>
+
+            <button type="button" onclick="calcularCosto()">Calcular Costos</button>
+        </form>
+
+        <p id="resultado"></p>
+    </div>
+
+    <div class="footer">
+        <p>Desarrollado por Tu Institución Educativa</p>
+    </div>
+
+    <button onclick="regresarAPrincipal()" class="btn">finalizar</button>
+    <script>
+        function calcularCosto() {
+            const costosOrdinario = {
+                pres: 1050,
+                dist: 150,
+                taller: 200
+            };
+            const costosExtraordinario = {
+                pres: 110,
+                dist: 250,
+                taller: 300
+            };
+            const costosEspecial = {
+                pres: 310,
+                dist: 350,
+                taller: 400
+            };
+            let ordPres = parseInt(document.getElementById("ordPres").value);
+            let ordDist = parseInt(document.getElementById("ordDist").value);
+            let ordTaller = parseInt(document.getElementById("ordTaller").value);
+
+            let extPres = parseInt(document.getElementById("extPres").value);
+            let extDist = parseInt(document.getElementById("extDist").value);
+            let extTaller = parseInt(document.getElementById("extTaller").value);
+
+            let espPres = parseInt(document.getElementById("espPres").value);
+            let espDist = parseInt(document.getElementById("espDist").value);
+            let espTaller = parseInt(document.getElementById("espTaller").value);
+            let costoOrd = (ordPres * costosOrdinario.pres) + (ordDist * costosOrdinario.dist) + (ordTaller * costosOrdinario.taller);
+            let costoExt = (extPres * costosExtraordinario.pres) + (extDist * costosExtraordinario.dist) + (extTaller * costosExtraordinario.taller);
+            let costoEsp = (espPres * costosEspecial.pres) + (espDist * costosEspecial.dist) + (espTaller * costosEspecial.taller);
+
+            costoOrd *= 1.15;
+            costoExt *= 1.15;
+            costoEsp *= 1.15;
+
+            document.getElementById("resultado").innerHTML = `Costo Matrícula Ordinaria: $${costoOrd.toFixed(2)}<br>
+                                                               Costo Matrícula Extraordinaria: $${costoExt.toFixed(2)}<br>
+                                                               Costo Matrícula Especial: $${costoEsp.toFixed(2)}`;
+        }
+
+        function regresarAPrincipal() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/simulador/simulador.html"
+        }
+    </script>
+</body>
+
+</html>

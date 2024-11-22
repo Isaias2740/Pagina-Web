@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #024e71;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .navigation {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>7. Contar Letras del Alfabeto</h1>
+        <input type="text" id="palabraAlfabeto" placeholder="Ingresa una palabra" />
+        <button onclick="contarLetrasAlfabeto()">Contar Letras</button>
+        <p id="resultadoAlfabeto"></p>
+    </div>
+    <div class="container">
+        <h1>8. Contar Dígitos</h1>
+        <input type="text" id="fraseDígitos" placeholder="Ingresa una frase" />
+        <button onclick="contarDigitos()">Contar Dígitos</button>
+        <p id="resultadoDigitos"></p>
+    </div>
+    <div class="container">
+        <h1>9. Contar Signos de Puntuación</h1>
+        <input type="text" id="palabraPuntuacion" placeholder="Ingresa una palabra" />
+        <button onclick="contarPuntuacion()">Contar Puntuación</button>
+        <p id="resultadoPuntuacion"></p>
+    </div>
+    <div class="container">
+        <h1>10. Contar Palabras</h1>
+        <input type="text" id="frasePalabras" placeholder="Ingresa una frase" />
+        <button onclick="contarPalabras()">Contar Palabras</button>
+        <p id="resultadoPalabras"></p>
+
+        <div class="navigation" style="margin-bottom: 25px;">
+            <button type="button" onclick="window.history.back()">Atrás</button>
+        </div>
+    </div>
+    <button onclick="regresarAPrincipal1()" class="btn">finalizar</button>
+    <script>
+        function contarLetrasAlfabeto() {
+            const palabra = document.getElementById("palabraAlfabeto").value;
+            const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let count = 0;
+            for (let i = 0; i < palabra.length; i++) {
+                if (letras.includes(palabra[i])) {
+                    count++;
+                }
+            }
+            document.getElementById("resultadoAlfabeto").innerText = `La palabra tiene ${count} letras del alfabeto.`;
+        }
+
+        function contarDigitos() {
+            const frase = document.getElementById("fraseDígitos").value;
+            const digitos = "0123456789";
+            let count = 0;
+            for (let i = 0; i < frase.length; i++) {
+                if (digitos.includes(frase[i])) {
+                    count++;
+                }
+            }
+            document.getElementById("resultadoDigitos").innerText = `La frase tiene ${count} dígitos.`;
+        }
+
+        function contarPuntuacion() {
+            const palabra = document.getElementById("palabraPuntuacion").value;
+            const puntuacion = ",.?!:;\"'()-[]{}";
+            let count = 0;
+            for (let i = 0; i < palabra.length; i++) {
+                if (puntuacion.includes(palabra[i])) {
+                    count++;
+                }
+            }
+            document.getElementById("resultadoPuntuacion").innerText = `La palabra tiene ${count} signos de puntuación.`;
+        }
+
+        function contarPalabras() {
+            const frase = document.getElementById("frasePalabras").value;
+            const palabras = frase.split(/\s+/).filter(Boolean);
+            document.getElementById("resultadoPalabras").innerText = `La frase tiene ${palabras.length} palabras.`;
+        }
+
+        function regresarAPrincipal1() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/proyecto.html"
+        }
+    </script>

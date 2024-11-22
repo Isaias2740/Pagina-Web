@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencia entre Operadores</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #024e71;
+            margin: 20px;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ingresa 10 Números</h1>
+    <div id="inputContainer">
+        <script>
+            for (let i = 1; i <= 10; i++) {
+                document.write(`<input type="number" id="num${i}" placeholder="Número ${i}" required><br>`);
+            }
+        </script>
+    </div>
+    <button onclick="mostrarNumeros()">Mostrar Números</button>
+    <div id="resultado"></div>
+    <button onclick="regresarAPrincipal()" class="btn">finalizar</button>
+    <script>
+        function mostrarNumeros() {
+            let numeros = [];
+            for (let i = 1; i <= 10; i++) {
+                let valor = document.getElementById(`num${i}`).value;
+                if (valor === "") {
+                    alert("Por favor, completa todos los campos.");
+                    return;
+                }
+                numeros.push(Number(valor));
+            }
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "<h2>Números ingresados:</h2>";
+            numeros.forEach((numero, indice) => {
+                resultadoDiv.innerHTML += `<p>Número ${indice + 1}: ${numero}</p>`;
+            });
+        }
+
+        function regresarAPrincipal() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/simulador/simulador.html"
+        }
+    </script>
+</body>
+
+</html>

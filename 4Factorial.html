@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicar Números</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9bbe0b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        main {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: #005f8d;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #aaa;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #007acc;
+            width: 80%;
+            max-width: 300px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #005f8d;
+            outline: none;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007acc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #005f8d;
+        }
+        
+        button:focus {
+            outline: none;
+        }
+        
+        p#resultado8,
+        p#resultado9,
+        p#resultado10 {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #007acc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calcular el Factorial de un Número</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number5" id="numero5" min="1" />
+    <button onclick="calcularFactorial()">Calcular Factorial</button>
+    <p id="resultado8"></p>
+
+    <h1>Multiplos de un numero</h1>
+    <p>Introduce un número:</p>
+    <input type="number6" id="numero6" min="1" max="20" />
+    <button onclick="mostrarDivisores()">Mostrar Divisores</button>
+    <p id="resultado9"></p>
+
+    <h1>Divisores de un Número</h1>
+    <p>Introduce un número:</p>
+    <input type="number7" id="numero7" min="1" />
+    <button onclick="mostrarDivisores2()">Mostrar Divisores</button>
+    <p id="resultado10"></p>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+        <button type="button" onclick="window.location.href='file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/numeros/5Numero%20perfecto.html'">Siguiente</button>
+    </div>
+    <script>
+        function calcularFactorial() {
+            let numero = parseInt(document.getElementById("numero5").value);
+            let factorial = 1;
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado8").innerText = "Por favor, introduce un número entero positivo.";
+                return;
+            }
+
+            for (let i = 1; i <= numero; i++) {
+                factorial *= i;
+            }
+
+            document.getElementById("resultado8").innerText = "El factorial de " + numero + " es: " + factorial;
+        }
+
+        function mostrarDivisores() {
+            let numero = parseInt(document.getElementById("numero6").value);
+            let resultado = "Divisores de " + numero + ": ";
+
+            if (isNaN(numero) || numero < 1 || numero > 20) {
+                document.getElementById("resultado9").innerText = "Por favor, introduce un número entre 1 y 20.";
+                return;
+            }
+
+            for (let i = 1; i <= 20; i++) {
+                if (numero % i === 0) {
+                    resultado += i + " ";
+                }
+            }
+
+            document.getElementById("resultado9").innerText = resultado;
+        }
+
+        function mostrarDivisores2() {
+            let numero = parseInt(document.getElementById("numero7").value);
+            let resultado = "Divisores de " + numero + " excluyendo el propio número: ";
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado10").innerText = "Por favor, introduce un número entero positivo.";
+                return;
+            }
+
+            for (let i = 1; i < numero; i++) {
+                if (numero % i === 0) {
+                    resultado += i + " ";
+                }
+            }
+
+            document.getElementById("resultado10").innerText = resultado;
+        }
+    </script>
+</body>
+
+</html>

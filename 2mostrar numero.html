@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaciado entre caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0ec548;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: rgba(55, 223, 80, 0.826);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(12, 120, 235, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #08668e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ingresa 10 Números</h1>
+    <div id="inputContainer">
+        <script>
+            for (let i = 1; i <= 10; i++) {
+                document.write(`<input type="number" id="num${i}" placeholder="Número ${i}" required><br>`);
+            }
+        </script>
+    </div>
+    <button onclick="mostrarNumeros()">Mostrar Números</button>
+    <div id="resultado"></div>
+
+    <h1>Calculadora de Promedio de Calificaciones</h1>
+    <div>
+        <input type="number" id="nota1" placeholder="Calificación 1" min="0" max="100"><br>
+        <input type="number" id="nota2" placeholder="Calificación 2" min="0" max="100"><br>
+        <input type="number" id="nota3" placeholder="Calificación 3" min="0" max="100"><br>
+        <input type="number" id="nota4" placeholder="Calificación 4" min="0" max="100"><br>
+        <input type="number" id="nota5" placeholder="Calificación 5" min="0" max="100"><br>
+    </div>
+    <button onclick="calcularPromedio()">Calcular Promedio</button>
+
+    <div id="resultado"></div>
+
+    <h1>Encontrar el Número Máximo</h1>
+    <p>Ingresa los números separados por comas:</p>
+    <input type="text" id="numeros" placeholder="Ej: 5, 12, 8, 23, 45">
+    <br>
+    <button onclick="encontrarMaximo()">Encontrar Máximo</button>
+
+    <div id="resultado"></div>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+        <button type="button" onclick="window.location.href='file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/arreglos/3ingresa%20numeros.html'">Siguiente</button>
+    </div>
+
+    <script>
+        function mostrarNumeros() {
+            let numeros = [];
+            for (let i = 1; i <= 10; i++) {
+                let valor = document.getElementById(`num${i}`).value;
+                if (valor === "") {
+                    alert("Por favor, completa todos los campos.");
+                    return;
+                }
+                numeros.push(Number(valor));
+            }
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "<h2>Números ingresados:</h2>";
+            numeros.forEach((numero, indice) => {
+                resultadoDiv.innerHTML += `<p>Número ${indice + 1}: ${numero}</p>`;
+            });
+        }
+
+        function calcularPromedio() {
+            let nota1 = parseFloat(document.getElementById("nota1").value);
+            let nota2 = parseFloat(document.getElementById("nota2").value);
+            let nota3 = parseFloat(document.getElementById("nota3").value);
+            let nota4 = parseFloat(document.getElementById("nota4").value);
+            let nota5 = parseFloat(document.getElementById("nota5").value);
+
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4) || isNaN(nota5)) {
+                alert("Por favor, ingresa todas las calificaciones.");
+                return;
+            }
+            let promedio = (nota1 + nota2 + nota3 + nota4 + nota5) / 5;
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = `El promedio de las calificaciones es: ${promedio.toFixed(2)}`;
+        }
+
+        function encontrarMaximo() {
+            let entrada = document.getElementById("numeros").value;
+            let numerosArray = entrada.split(",").map(Number);
+            if (numerosArray.some(isNaN)) {
+                alert("Por favor, ingresa solo números separados por comas.");
+                return;
+            }
+            let maximo = Math.max(...numerosArray);
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = `El número más grande es: ${maximo}`;
+        }
+    </script>
+</body>
+
+</html>

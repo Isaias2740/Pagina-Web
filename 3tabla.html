@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Multiplicar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #730ecb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        main {
+            background: #018aa9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: #005f8d;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #aaa;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #007acc;
+            width: 80%;
+            max-width: 300px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #005f8d;
+            outline: none;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007acc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        p#resultado5,
+        p#resultado6 {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #007acc;
+            font-weight: bold;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: rgb(247, 248, 248);
+            background-color: #007acc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #005f8d;
+        }
+        
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generar Tabla de Multiplicar</h1>
+    <p>Introduce un número:</p>
+    <input type="number2" id="numero2" min="1" />
+    <button onclick="generarTabla()">Generar Tabla</button>
+    <p id="resultado5"></p>
+
+    <h1>Generar Serie de Fibonacci</h1>
+    <p>Introduce un número para generar la serie de Fibonacci:</p>
+    <input type="number3" id="numero3" min="1" />
+    <button onclick="generarFibonacci()">Generar Serie</button>
+    <p id="resultado6"></p>
+
+    <h1>Multiplicar Números</h1>
+    <p>Introduce un número entero positivo:</p>
+    <input type="number4" id="numero4" min="1" />
+    <button onclick="multiplicarNumeros()">Calcular Producto</button>
+    <p id="resultado7"></p>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+        <button type="button" onclick="window.location.href='file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/numeros/4Factorial.html'">Siguiente</button>
+    </div>
+
+    <script>
+        function generarTabla() {
+            let numero = parseInt(document.getElementById("numero2").value);
+            let resultado = "";
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado").innerText = "Por favor, introduce un número válido.";
+                return;
+            }
+
+            for (let i = 1; i <= 10; i++) {
+                resultado += numero + " x " + i + " = " + (numero * i) + "<br>";
+            }
+
+            document.getElementById("resultado5").innerHTML = resultado;
+        }
+
+        function generarFibonacci() {
+            let numero = parseInt(document.getElementById("numero3").value);
+            let resultado = [];
+            let a = 1,
+                b = 2,
+                temp;
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado6").innerText = "Por favor, introduce un número entero positivo.";
+                return;
+            }
+
+            while (resultado.length < numero) {
+                resultado.push(a);
+                temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            document.getElementById("resultado6").innerText = "La serie de Fibonacci es: " + resultado.join(", ");
+        }
+
+        function multiplicarNumeros() {
+            let numero = parseInt(document.getElementById("numero4").value);
+            let producto = 1;
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado7").innerText = "Por favor, introduce un número entero positivo.";
+                return;
+            }
+
+            for (let i = 1; i <= numero; i++) {
+                producto *= i;
+            }
+
+            document.getElementById("resultado7").innerText = "El producto de los números del 1 al " + numero + " es: " + producto;
+        }
+    </script>
+</body>
+
+</html>

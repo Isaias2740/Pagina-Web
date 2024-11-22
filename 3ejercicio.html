@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diferencia entre Operadores</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #024e71;
+            margin: 20px;
+        }
+        
+        .container {
+            background-color: rgba(16, 202, 248, 0.826);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .navigation button {
+            width: 150px;
+        }
+        
+        button.btn {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contador de Vocales</h1>
+        <textarea id="frase" rows="5" placeholder="Ingresa una frase"></textarea>
+        <button onclick="contarVocales()">Contar Vocales</button>
+        <p id="resultado"></p>
+    </div>
+    <button onclick="regresarAPrincipal()" class="btn">finalizar</button>
+    <script>
+        function contarVocales() {
+            let frase = document.getElementById("frase").value.toLowerCase();
+
+            if (frase.trim() === "") {
+                document.getElementById("resultado").innerText = "Por favor, ingresa una frase.";
+                return;
+            }
+            let contador = 0;
+            const vocales = ['a', 'e', 'i', 'o', 'u'];
+
+            for (let letra of frase) {
+                if (vocales.includes(letra)) {
+                    contador++;
+                }
+            }
+            document.getElementById("resultado").innerText = `Número de vocales: ${contador}`;
+        }
+
+        function regresarAPrincipal() {
+            window.location.href = "file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/simulador/simulador.html"
+        }
+    </script>
+</body>
+
+</html>

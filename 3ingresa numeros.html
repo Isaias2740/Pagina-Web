@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaciado entre caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0ec548;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background-color: rgba(55, 223, 80, 0.826);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(12, 120, 235, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            background-color: #08668e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Promedio de Números Mayores a un Límite</h1>
+        <input type="text" id="numeros" placeholder="Ingresa números separados por comas (Ej: 5, 10, 15)">
+        <input type="number" id="limite" placeholder="Ingresa el valor límite">
+        <button onclick="calcularPromedio()">Calcular Promedio</button>
+        <p id="resultado"></p>
+    </div>
+    <div class="container">
+        <h1>Encontrar el Número Mínimo</h1>
+        <input type="text" id="numeros" placeholder="Ingresa números separados por comas (Ej: 5, 10, 15)">
+        <button onclick="encontrarMinimo()">Encontrar Mínimo</button>
+        <p id="resultado"></p>
+    </div>
+    <div class="container">
+        <h1>Promedio de Números Pares</h1>
+        <p>Ingresa 10 números:</p>
+        <div id="inputsContainer">
+        </div>
+        <button onclick="calcularPromedioPares()">Calcular Promedio de Pares</button>
+        <p id="resultado"></p>
+    </div>
+    <div class="navigation" style="margin-bottom: 25px;">
+        <button type="button" onclick="window.history.back()">Atrás</button>
+        <button type="button" onclick="window.location.href='file:///C:/Users/LENOVO/Documents/pag/proyecto_js/pages/arreglos/4arreglo.html'">Siguiente</button>
+    </div>
+
+    <script>
+        function calcularPromedio() {
+            const entradaNumeros = document.getElementById("numeros").value;
+            const limite = parseFloat(document.getElementById("limite").value);
+            const numerosArray = entradaNumeros.split(",").map(Number);
+            const numerosFiltrados = numerosArray.filter(num => num > limite);
+            if (numerosFiltrados.length === 0) {
+                document.getElementById("resultado").innerText = "No hay números mayores al límite.";
+                return;
+            }
+            const suma = numerosFiltrados.reduce((acumulador, numero) => acumulador + numero, 0);
+            const promedio = suma / numerosFiltrados.length;
+            document.getElementById("resultado").innerText = `El promedio de los números mayores a ${limite} es: ${promedio.toFixed(2)}`;
+        }
+
+        function encontrarMinimo() {
+            const entradaNumeros = document.getElementById("numeros").value;
+            const numerosArray = entradaNumeros.split(",").map(Number);
+            if (numerosArray.some(isNaN)) {
+                document.getElementById("resultado").innerText = "Por favor, ingresa solo números válidos separados por comas.";
+                return;
+            }
+            const minimo = Math.min(...numerosArray);
+            document.getElementById("resultado").innerText = `El número más pequeño es: ${minimo}`;
+        }
+        for (let i = 1; i <= 10; i++) {
+            const input = document.createElement("input");
+            input.type = "number";
+            input.id = "num" + i;
+            input.placeholder = `Número ${i}`;
+            document.getElementById("inputsContainer").appendChild(input);
+        }
+
+        function calcularPromedioPares() {
+            let numeros = [];
+            let sumaPares = 0;
+            let contadorPares = 0;
+            for (let i = 1; i <= 10; i++) {
+                const valor = parseInt(document.getElementById("num" + i).value);
+                if (!isNaN(valor)) {
+                    numeros.push(valor);
+                }
+            }
+            for (let num of numeros) {
+                if (num % 2 === 0) {
+                    sumaPares += num;
+                    contadorPares++;
+                }
+            }
+            if (contadorPares === 0) {
+                document.getElementById("resultado").innerText = "No se encontraron números pares.";
+            } else {
+                let promedioPares = sumaPares / contadorPares;
+                document.getElementById("resultado").innerText = `El promedio de los números pares es: ${promedioPares.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+
+</html>
